@@ -1,6 +1,6 @@
 
 # Abrir un archivo con open() y close()
-file_handler = open('c:/planets.csv')
+file_handler = open('c:/crop_production.csv')
 
 for linea in file_handler:
     print(linea)
