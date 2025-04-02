@@ -12,11 +12,8 @@ with open('c:/planets.csv') as archivo:
     for linea in archivo:
         print(linea)
 
-
 # Recorrer un archivos
-
 file_handler = open('c:/planets.csv')
-
 next(file_handler)
 
 minimo_rotacional = 100
@@ -34,6 +31,8 @@ for linea in file_handler:
     if minimo_rotacional >  periodo_rotacional:      
       minimo_rotacional = periodo_rotacional
       nombre_planeta = nombre
+    elif periodo_rotacional  == minimo_rotacional:
+      nombre_planeta = nombre_planeta + " , " + nombre
 
 print("El planeta con el menor periodo rotacional es: ",nombre_planeta, " ", minimo_rotacional)
 
