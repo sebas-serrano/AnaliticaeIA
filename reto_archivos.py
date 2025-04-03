@@ -12,6 +12,21 @@ Contiene: 345.000 Registros Aprox
 
 """
 
+def estado_mas_productivo(file_handler):
+    produccion_maxima = 0
+    estado = ""
+    unidad = ""
+    for linea in file_handler:
+        l = linea.split(',')
+        if l[7] != '':        
+            produccion = float(l[7])
+            if produccion_maxima < produccion:
+                produccion_maxima = produccion
+                estado = l[0]
+                unidad = l[8]
+
+    print("EL Estado que mas  sembro fue: ", estado, " y la cantidad fue: ", produccion_maxima, " ", unidad)
+
 def apertura_archivo():
     # Lectura del Archivo
     file_handler = open('C:/Users/User/iCloudDrive/Cursos/UTEC/DataSets/India Agriculture Crop Production.csv')
@@ -37,4 +52,7 @@ def anio_mas_sembrado(file_handler):
 # Llamada a los metodos
 file = apertura_archivo()
 anio_mas_sembrado(file)
+
+file = apertura_archivo()
+estado_mas_productivo(file)
 
