@@ -12,20 +12,29 @@ Contiene: 345.000 Registros Aprox
 
 """
 
-# Lectura del Archivo
-file_handler = open('C:/Users/User/iCloudDrive/Cursos/UTEC/DataSets/India Agriculture Crop Production.csv')
+def apertura_archivo():
+    # Lectura del Archivo
+    file_handler = open('C:/Users/User/iCloudDrive/Cursos/UTEC/DataSets/India Agriculture Crop Production.csv')
 
-next(file_handler)
-# State,District,Crop,Year,Season,Area,Area Units,Production,Production Units,Yield
+    next(file_handler)
+    # State,District,Crop,Year,Season,Area,Area Units,Production,Production Units,Yield
 
-area_maxima = 0
-anio = 0
-for linea in file_handler:
-    l = linea.split(',')
-    if l[5] != '':        
-        area = float(l[5])
-        if area > area_maxima:
-            area_maxima = area
-            anio = l[3]
+    return file_handler
 
-print("EL año que mas se sembro fue: ", anio, " y la cantidad fue: ", area_maxima, " has.")
+def anio_mas_sembrado(file_handler):
+    area_maxima = 0
+    anio = 0
+    for linea in file_handler:
+        l = linea.split(',')
+        if l[5] != '':        
+            area = float(l[5])
+            if area > area_maxima:
+                area_maxima = area
+                anio = l[3]
+
+    print("EL año que mas se sembro fue: ", anio, " y la cantidad fue: ", area_maxima, " has.")
+
+# Llamada a los metodos
+file = apertura_archivo()
+anio_mas_sembrado(file)
+
