@@ -7,7 +7,7 @@ Contiene: 345.000 Registros Aprox
 
  Preguntas:
  1.- Cual fue el area (en has) que mas se semrbo y en que año fue.
- 2.- Cual fue el Estado que mas produccion tuvo y cual fue el cultivo
+ 2.- Cual fue el Estado que mas produccion tuvo
  3.- 
 
 """
@@ -50,9 +50,9 @@ def anio_mas_sembrado(file_handler):
     print("EL año que mas se sembro fue: ", anio, " y la cantidad fue: ", area_maxima, " has.")
 
 # Llamada a los metodos
-file = apertura_archivo()
-anio_mas_sembrado(file)
+file_siembra = apertura_archivo()
+anio_mas_sembrado(file_siembra)
 
-file = apertura_archivo()
-estado_mas_productivo(file)
+file_siembra = apertura_archivo()
+estado_mas_productivo(file_siembra)
 
