@@ -8,7 +8,7 @@ Contiene: 345.000 Registros Aprox
  Preguntas:
  1.- Cual fue el area (en has) que mas se semrbo y en que año fue.
  2.- Cual fue el Estado que mas produccion tuvo
- 3.- 
+ 
 
 """
 
@@ -26,6 +26,21 @@ def estado_mas_productivo(file_handler):
                 unidad = l[8]
 
     print("EL Estado que mas  sembro fue: ", estado, " y la cantidad fue: ", produccion_maxima, " ", unidad)
+
+# Crear función para responder la pregunta 3
+def cultivo_mas_sembrado_por_estado(df):
+    # Agrupar por Estado, Cultivo y Año, y sumar el área sembrada
+    resumen = df.groupby(['State', 'Crop', 'Year'])['Area'].sum().reset_index()
+
+    # Obtener el cultivo con mayor área por estado
+    resultado = resumen.loc[resumen.groupby('State')['Area'].idxmax()]
+
+    import ace_tools as tools; tools.display_dataframe_to_user(name="Cultivo más sembrado por estado", dataframe=resultado)
+    return resultado
+
+# Llamar a la función
+cultivo_mas_sembrado_por_estado(df)
+
 
 def apertura_archivo():
     # Lectura del Archivo
