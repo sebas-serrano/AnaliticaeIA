@@ -38,3 +38,5 @@ print(matriz2)
 
 matriz3= np.arange(5,101,5).reshape(10,2)
 print(matriz3)
+print(matriz3)
+
