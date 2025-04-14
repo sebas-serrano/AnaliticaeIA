@@ -38,5 +38,21 @@ print(matriz2)
 
 matriz3= np.arange(5,101,5).reshape(10,2)
 print(matriz3)
-print(matriz3)
+
+
+# RECOMENDADA
+
+matriz10 = np.array([[3],[2]])
+print(matriz10)
+
+matriz11 = np.zeros((3, 3))
+print(matriz11)
+
+matriz12= np.ones((3, 3))
+print(matriz12.sum(axis=0))
+
+matriz3.sum(axis=0)
+matriz3.sum(axis=1)
+
+# eduardo.cendejas@tec.mx
 
