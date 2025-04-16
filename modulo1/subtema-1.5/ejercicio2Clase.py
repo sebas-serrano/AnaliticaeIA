@@ -14,16 +14,9 @@ x2 = ( c - A ((F - E X2 ) /D) ) / B
 
 Despejamos
 X2 = (CD - AF) / (AE + BD)
-
-
-
-
 """
 
 # A, B,C,D,E y F los debe ingresar el usuario
-
- 
-
 
 def calcularEcuaciones(a, b, c, d, e, f):
     """
