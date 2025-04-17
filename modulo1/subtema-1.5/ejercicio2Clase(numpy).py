@@ -13,11 +13,17 @@ calcule lo siguiente:
 """
 
 # Crear matriz vacía
+datos = np.zeros((2, 4), dtype=float)
+
+# Arreglo de los porcentajes defectuoso
 defectuoso = [0.02, 0.05, 0.08, 0.1]
+
+# Arreglo con los tipos de focod
 tipos = ['Transparentes','Opacos']
+
+# Arreglo con los modelos de focos
 modelos = ['M1','M2','M3','M4']
 
-datos = np.zeros((2, 4), dtype=float)
 
 def cargarDatos():
     """
@@ -37,6 +43,7 @@ def cargarDatos():
             valor = int(input(f"Ingrese la cantida de focos para el tipo {modelos [j]} [{i}][{j}]: "))
             datos[i][j] = valor
 
+
 def ejercicioA():
     """
         Funcion: La cantidad de focos transparentes en buen estado que se fabrican.
@@ -53,6 +60,7 @@ def ejercicioA():
     for i in range (4):
         salida[i] = datos[0, i] - (defectuoso[i] * datos[0, i])
     return salida
+
 
 def ejercicioB():
     """
@@ -71,6 +79,27 @@ def ejercicioB():
         salida[i] = defectuoso[i] * datos[1, i]
     return salida
 
+def ejercicioC():
+    global datos, defectuoso, tipos, modelos
+
+    # Creamos una matriz de defectuosos (2 filas, 4 columnas)
+    matriz_defectuosos = np.zeros((2, 4), dtype=float)
+
+    for i in range(2):
+        for j in range(4):
+            matriz_defectuosos[i, j] = datos[i, j] * defectuoso[j]
+     # Buscar el índice del valor máximo
+    indice_max = np.unravel_index(np.argmax(matriz_defectuosos), matriz_defectuosos.shape)
+    tipo_max = tipos[indice_max[0]]
+    modelo_max = modelos[indice_max[1]]
+    cantidad_max = matriz_defectuosos[indice_max]
+
+    # Mostrar resultado
+    print(f"\nEl tipo y modelo que más se produce en mal estado es: {tipo_max}, modelo {modelo_max}")
+    print(f"Cantidad de defectuosos: {cantidad_max}")
+
+
+
 # Main principal
 cargarDatos()
 
@@ -86,5 +115,5 @@ print("Cantidad de Focos Opacos defectuosos:")
 for i in range(4):
     print("Del modelo ", modelos[i], " se fabricaron ", salidaB[i])
 
-
+ejercicioC()
         
