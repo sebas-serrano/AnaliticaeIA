@@ -36,3 +36,11 @@ Muy parecido a las estructuras matriciales trabajadas con NumPy.
 • Tamaño variable
 """
 
+salud = pd.DataFrame({
+    "Paciente": pd.Series(["1","2","3"]),
+    "edad": pd.Series([2,3,4])
+
+}) 
+print(salud)
+
+
