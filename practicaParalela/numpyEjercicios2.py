@@ -31,3 +31,24 @@ print(a3.size)
 print(a1.dtype)
 print(a2.dtype)
 print(a3.dtype)
+
+
+###############################################################################################
+a4 = np.linspace(1,40,19)
+print(a4 [3])
+
+print("---------------------------")
+a5 =  np.ones([3,3])
+for i in range(3):
+    for j in range (3):
+        a5 [i][j] = i*3+j
+print(a5)
+a6 =  np.ones([3,3])
+for i in range(3):
+    for j in range (3):
+        a6 [i][j] = j*3+i+7
+
+print(a6)
+print(a6.dot(a5))
+
+
