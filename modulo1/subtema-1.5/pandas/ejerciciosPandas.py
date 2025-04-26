@@ -37,10 +37,14 @@ Muy parecido a las estructuras matriciales trabajadas con NumPy.
 """
 
 salud = pd.DataFrame({
-    "Paciente": pd.Series(["1","2","3"]),
+    "paciente": pd.Series(["1","2","3"]),
     "edad": pd.Series([2,3,4])
 
 }) 
 print(salud)
 
+salud["paciente"].sum()
+
+#Vemos que columnas tienen nuestro DataFrame
+print(salud.columns)
 
