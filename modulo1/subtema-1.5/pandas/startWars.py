@@ -4,7 +4,7 @@ import pandas as pd
 df = pd.read_csv("archivos/04 starships.csv")
 
 # Muestra la estructura del dataframe que contiene los datos
-# print(df.info())
+print(df.info())
 
 # Imprimos primeros registros
 print(df.head())
@@ -37,9 +37,13 @@ nave_mas_barata = df.loc[idx]
 # ¿Cuál es la nave más larga?
 idx_Larga = df['length'].idxmin()
 nave_mas_larga = df.loc[idx_Larga]
-print(nave_mas_larga)
+# print(nave_mas_larga)
 
-# Obtén los registros de las naves con más de 1000 tripulantes
+# Obtén los registros de las naves con más de 1000 tripulantes (cargo_capacity)
+registros = df['cargo_capacity'] > 1000
+print(registros)
+
+
 
 
 
