@@ -49,12 +49,37 @@ nave_mas_larga = df.loc[idx_Larga]
 
 # Obtén los registros de las naves con más de 1000 tripulantes (cargo_capacity)
 mayores = df[df['cargo_capacity'] > 100000]
-print(mayores)
+# print(mayores)
 
 
+# Obtén los registros de las naves con el menor hyperdrive_rating
+menor = df.sort_values('hyperdrive_rating', ascending=True).head(10)
+# print(menor)
 
 
+# Obtén todos los registros que son del tipo “Starfighter” o que su “hyperdrive_rating” sea mayor a la del promedio de las naves
+promedio_hyperdrive = df['hyperdrive_rating'].mean()
+registros = df[ (df['starship_class'] == 'Starfighter') | (df['hyperdrive_rating'] > promedio_hyperdrive) ]
+# print(registros)
 
 
+# Obtén una columna nueva con la relación entre “cargo_capacity” y “crew”, piensa por ejemplo en cuanta capacidad se puede 
+# manejar por persona
+df['nueva columna'] = df['cargo_capacity'] / df['crew']
+# print(df['nueva columna'])
 
 
+# Obtén los registros que tengan datos faltantes para “max_atmosphering_speed” y guarda el dataframe, después en el dataframe 
+# original cambia los datos faltantes por 0
+
+# 1. Guardar los registros con datos faltantes en 'max_atmosphering_speed'
+df2 = df[df['max_atmosphering_speed'].isnull()].copy()
+
+# 2. En el dataframe original, reemplazar los NaN por 0
+df['max_atmosphering_speed'] = df['max_atmosphering_speed'].fillna(0)
+
+# 3. Ahora, en df2, si querés cambiar su columna, también podés hacer:
+df2['max_atmosphering_speed'] = 0  # (opcional)
+
+# Mostrar para verificar
+print(df2['max_atmosphering_speed'])
