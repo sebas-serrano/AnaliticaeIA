@@ -42,7 +42,7 @@ nave_mas_barata = df.loc[idx]
 
 
 # ¿Cuál es la nave más larga?
-idx_Larga = df['length'].idxmin()
+idx_Larga = df['length'].idxmax()
 nave_mas_larga = df.loc[idx_Larga]
 # print(nave_mas_larga)
 
