@@ -28,14 +28,16 @@ vacuna_enero = df [ df['date'] == "2021-01-29"]
 paises = df['country'].nunique()
 # print(paises)
 
-# ¿Cuántos países tienen información de vacunación en el continente Europeo?
-
-
 # ¿Cuántas vacunas diferentes se han utilizado en la base de datos?
+vacunas = df['vaccines'].nunique()
+# print(vacunas)
 
 # ¿Cuántos países han utilizado la vacuna “Sputnik V”?
+a = df[ df['vaccines'].str.contains('Sputnik V')]
+print(a ['country'].nunique())
 
 # ¿Cuáles son los 10 países con mayor porcentaje de personas totalmente vacunadas respecto a su población?
+
 
 # ¿Cuáles son los 5 países con menor porcentaje de personas totalmente vacunadas respecto a su población?
 
