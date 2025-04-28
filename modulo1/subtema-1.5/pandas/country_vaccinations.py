@@ -34,10 +34,16 @@ vacunas = df['vaccines'].nunique()
 
 # ¿Cuántos países han utilizado la vacuna “Sputnik V”?
 a = df[ df['vaccines'].str.contains('Sputnik V')]
-print(a ['country'].nunique())
+# print(a ['country'].nunique())
 
 # ¿Cuáles son los 10 países con mayor porcentaje de personas totalmente vacunadas respecto a su población?
+# Primero elimino las filas que tengan 0
+df = df[(df['people_vaccinated'] != 0) & (df['total_vaccinations'] != 0)]
+mayor_porcentaje = df.groupby('country').agg({
+    'total_vaccinations': 'sum',
+    'people_vaccinated': 'sum'
+})
 
-
-# ¿Cuáles son los 5 países con menor porcentaje de personas totalmente vacunadas respecto a su población?
+mayor_porcentaje ['mayor_porcentaje'] = (mayor_porcentaje ['people_vaccinated'] / mayor_porcentaje ['total_vaccinations']) * 100
+print(mayor_porcentaje.sort_values('mayor_porcentaje', ascending=False).head(10))
 
