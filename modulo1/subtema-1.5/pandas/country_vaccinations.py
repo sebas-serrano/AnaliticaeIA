@@ -47,3 +47,12 @@ mayor_porcentaje = df.groupby('country').agg({
 mayor_porcentaje ['mayor_porcentaje'] = (mayor_porcentaje ['people_vaccinated'] / mayor_porcentaje ['total_vaccinations']) * 100
 print(mayor_porcentaje.sort_values('mayor_porcentaje', ascending=False).head(10))
 
+# Guardar todos los dataframe usados en formato de archivo de Excel
+
+mayor_porcentaje.to_excel('vacunas.xlsx', sheet_name="vacunas2")
+
+ExcelWriter -> writer
+vacunas.to_excel(writer, 'vacunas.xlsx', sheet_name="vacunas")
+
+
+
