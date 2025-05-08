@@ -22,6 +22,6 @@ df_unificado = pd.concat(dataframes, ignore_index=True)
 
 # Mostrar resultado
 print(f"Total de filas combinadas: {len(df_unificado)}")
-print(df_unificado.head())
+print(df_unificado.head(10))
 
 
