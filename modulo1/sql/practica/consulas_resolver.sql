@@ -288,3 +288,12 @@ select l.genero , count (p.id)
 from libros l , prestamos p 
 where l.id = p.libro_id
 group by l.genero
+
+
+-- 6. Ver todos los comentarios de los libros, mostrando el puntaje y etiquetas:
+SELECT 
+  l.titulo,
+  c.detalle ->> 'puntaje' AS puntaje,
+  c.detalle -> 'etiquetas' AS etiquetas
+FROM comentarios c, libros l 
+where c.libro_id  = l.id
