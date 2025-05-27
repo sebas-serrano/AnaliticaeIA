@@ -3,11 +3,6 @@ FROM information_schema.schemata;
 
 SELECT datname FROM pg_database WHERE datistemplate = false;
 
-
-
-
-
-
 CREATE table utec.usuarios (
     id SERIAL PRIMARY KEY,
     nombre VARCHAR(100),
