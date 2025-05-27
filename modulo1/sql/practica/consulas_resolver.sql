@@ -262,13 +262,11 @@ WHERE NOT EXISTS (
     WHERE p.libro_id = l.id
 );
 
-
 -- 2. Listar usuarios y la cantidad total de libros distintos que se han prestado
 select  u.nombre, count (distinct (p.libro_id))
 from prestamos p , usuarios u , libros l  
 where p.usuario_id = u.id and p.libro_id = l.id
 group by u.nombre
-
 
 -- 3. Libros y total de préstamos históricos, listando solo los mas prestados (todos los libros con el maximo de prestamos)
 select l.titulo, count (p.libro_id) as total_pestados
@@ -279,20 +277,5 @@ order by total_pestados  desc
 limit 1
 
 
-SELECT l.titulo, COUNT(*) AS total_prestamos
-FROM prestamos p
-JOIN libros l ON p.libro_id = l.id
-GROUP BY l.titulo
-HAVING COUNT(*) = (
-    SELECT MAX(conteo)
-    FROM (
-        SELECT COUNT(*) AS conteo
-        FROM prestamos
-        GROUP BY libro_id
-    ) AS sub
-);
-
-
-
-
+-- 4. Ranking de usuarios por cantidad de préstamos:
 
