@@ -293,7 +293,17 @@ group by l.genero
 -- 6. Ver todos los comentarios de los libros, mostrando el puntaje y etiquetas:
 SELECT 
   l.titulo,
-  c.detalle ->> 'puntaje' AS puntaje,
+  c.detalle -> 'puntaje' AS puntaje,
   c.detalle -> 'etiquetas' AS etiquetas
 FROM comentarios c, libros l 
 where c.libro_id  = l.id
+
+-- 7. Listar los libros cuyo promedio de puntaje en comentarios sea igual o mayor que 4 (REDONDEAR A 2 DECIMALES):
+SELECT 
+  l.titulo,
+  ROUND(AVG((c.detalle ->> 'puntaje')::numeric), 2) AS promedio_puntaje
+FROM libros l
+JOIN comentarios c ON l.id = c.libro_id
+GROUP BY l.titulo
+HAVING AVG((c.detalle ->> 'puntaje')::numeric) >= 4;
+
