@@ -276,7 +276,6 @@ group by l.titulo
 order by total_pestados  desc
 limit 1
 
-
 -- 4. Ranking de usuarios por cantidad de préstamos:
 select  u.nombre ,count(p.id) as cantidad
 from usuarios u , prestamos p 
@@ -284,3 +283,8 @@ where u.id  = p.usuario_id
 group by p.usuario_id, u.nombre
 order by cantidad  desc
 
+-- 5. Cantidad de libros prestados por género:
+select l.genero , count (p.id)
+from libros l , prestamos p 
+where l.id = p.libro_id
+group by l.genero
