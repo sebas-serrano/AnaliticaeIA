@@ -278,4 +278,9 @@ limit 1
 
 
 -- 4. Ranking de usuarios por cantidad de préstamos:
+select  u.nombre ,count(p.id) as cantidad
+from usuarios u , prestamos p 
+where u.id  = p.usuario_id
+group by p.usuario_id, u.nombre
+order by cantidad  desc
 
