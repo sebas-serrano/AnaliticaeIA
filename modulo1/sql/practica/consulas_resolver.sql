@@ -307,3 +307,19 @@ JOIN comentarios c ON l.id = c.libro_id
 GROUP BY l.titulo
 HAVING AVG((c.detalle ->> 'puntaje')::numeric) >= 4;
 
+-- D. Vistas y funciones
+-- 8. Crear una vista para préstamos activos, mostrando usuario, libro y días desde el préstamo:
+
+create view vista as
+select u.nombre as usuario, l.titulo as titulo_libro, (CURRENT_DATE - p.fecha_prestamo) as Dias_Prestamos
+from prestamos p, usuarios u, libros l
+where  p.fecha_devolucion IS NOT NULL
+  AND  p.fecha_devolucion > CURRENT_DATE and
+  p.usuario_id = u.id and l.id = p.libro_id
+  
+  
+drop view vista
+
+
+-- Ejecutar la vista anterior:
+select * from vista
